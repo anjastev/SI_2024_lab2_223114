@@ -39,8 +39,9 @@ V(G)=27−15+2×1=14
 4.Every Branch критериум
 
 
+
 public class SILab2Test {
-    
+
     // Тест случај кога allItems е null
     @Test(expected = RuntimeException.class)
     public void testCheckCart_AllItemsNull() {
@@ -104,6 +105,7 @@ public class SILab2Test {
     } }
 
 5.Multiple Condition критериум
+
 
 
 public class SILab2MultipleConditionTest {
