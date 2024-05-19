@@ -21,13 +21,13 @@
 
 public class SILab2Test {
 
-    // Тест случај кога allItems е null
+    //кога allItems е null
     @Test(expected = RuntimeException.class)
     public void testCheckCart_AllItemsNull() {
         SILab2.checkCart(null, 100);
     }
 
-    // Тест случај кога името на предметот е null
+    //кога името е null
     @Test
     public void testCheckCart_ItemNameIsNull() {
         Item item = new Item(null, "34527", 150, 0.1f);
@@ -36,7 +36,7 @@ public class SILab2Test {
         assertTrue(SILab2.checkCart(items, 200));
     }
 
-    // Тест случај кога barcode на предметот е валиден
+    //кога barcode е валиден
     @Test
     public void testCheckCart_ValidBarcode() {
         Item item = new Item("Item1", "34527", 150, 0.1f);
@@ -45,7 +45,7 @@ public class SILab2Test {
         assertTrue(SILab2.checkCart(items, 200));
     }
 
-    // Тест случај кога barcode на предметот е null
+    //кога barcode е null
     @Test(expected = RuntimeException.class)
     public void testCheckCart_ItemBarcodeIsNull() {
         Item item = new Item("Item1", null, 150, 0.1f);
@@ -54,7 +54,7 @@ public class SILab2Test {
         SILab2.checkCart(items, 200);
     }
 
-    // Тест случај кога barcode на предметот содржи невалиден карактер
+    //кога barcode содржи невалиден карактер
     @Test(expected = RuntimeException.class)
     public void testCheckCart_InvalidBarcodeCharacter() {
         Item item = new Item("Item1", "12@*45", 150, 0.1f);
@@ -63,7 +63,7 @@ public class SILab2Test {
         SILab2.checkCart(items, 200);
     }
 
-    // Тест случај кога price > 300, има попуст и првиот карактер во barcode е '0'
+    //кога price > 300, има попуст и првиот карактер во barcode е '0'
     @Test
     public void testCheckCart_PriceDiscountBarcode() {
         Item item = new Item("Item1", "01456", 400, 0.2f);
@@ -72,7 +72,7 @@ public class SILab2Test {
         assertTrue(SILab2.checkCart(items, 350));
     }
 
-    // Тест случај кога price <= 300 или нема попуст или првиот карактер во barcode не е '0'
+    //кога price <= 300 или нема попуст или првиот карактер во barcode не е '0'
     @Test
     public void testCheckCart_OtherCases() {
         Item item1 = new Item("Item1", "34527", 200, 0.1f);
@@ -89,35 +89,35 @@ public class SILab2Test {
 public class SILab2MultipleConditionTest {
 
 
-    // Тест случај кога сите услови се исполнети
+    //сите услови се исполнети
     @Test
     public void testCheckCart_AllConditionsTrue() {
         Item item = new Item("Item1", "0123984", 400, 0.2f);
         assertTrue(SILab2.checkCart(List.of(item), 350));
     }
 
-    // Тест случај кога price е помал од 300
+    //price е помал од 300
     @Test
     public void testCheckCart_PriceLessThan300() {
         Item item = new Item("Item1", "07634", 200, 0.1f);
         assertFalse(SILab2.checkCart(List.of(item), 200));
     }
 
-    // Тест случај кога discount е 0
+    //discount е 0
     @Test
     public void testCheckCart_DiscountIsZero() {
         Item item = new Item("Item1", "08734", 400, 0);
         assertFalse(SILab2.checkCart(List.of(item), 350));
     }
 
-    // Тест случај кога првиот карактер од barcode не е '0'
+    //кога првиот карактер од barcode не е '0'
     @Test
     public void testCheckCart_FirstCharOfBarcodeNotZero() {
         Item item = new Item("Item1", "18765", 400, 0.2f);
         assertFalse(SILab2.checkCart(List.of(item), 350));
     }
 
-    // Тест случај кога сите услови не се исполнети
+    //сите услови не се исполнети
     @Test
     public void testCheckCart_NoConditionsTrue() {
         Item item = new Item("Item1", "172945", 200, 0);
