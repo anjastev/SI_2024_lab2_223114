@@ -3,7 +3,7 @@
 Ања Стевковска, бр. на индекс 223114
 
 2.Control Flow Graph 
-![slika](C:\Users\Anja Stevkovska\SI_lab2_223114\cfg-controlflowgraph.drawio.png)
+![cfg-controlflowgraph drawio](https://github.com/anjastev/SI_2024_lab2_223114/assets/135065807/0a7c6b71-a321-47d5-8a09-b2bd0726789c)
 
 3.Цикломатската комплексност
 
@@ -14,6 +14,7 @@
 Рабови (Е) = 18
 
 Број на поврзани компоненти (P) = 1
+
 
 E − N + 2P = 19 - 18 + 2 * 1 = 3
 
