@@ -3,14 +3,18 @@
 Ања Стевковска, бр. на индекс 223114
 
 2.Control Flow Graph 
-!(slika)[cfg-controlflowgraph.drawio.png]
+![slika](C:\Users\Anja Stevkovska\SI_lab2_223114\cfg-controlflowgraph.drawio.png)
 
 3.Цикломатската комплексност
 
 Цикломатска комплексност = E − N + 2P
+
 Јазли (N) = 19
+
 Рабови (Е) = 18
+
 Број на поврзани компоненти (P) = 1
+
 E − N + 2P = 19 - 18 + 2 * 1 = 3
 
 
