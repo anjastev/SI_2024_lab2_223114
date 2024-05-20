@@ -13,33 +13,33 @@ public class SILab2Test {
         RuntimeException exc;
         exc = assertThrows(RuntimeException.class, ()->
             SILab2.checkCart(null, 0));
-        assertTrue(exc.getMessage().contains("List can't be null!"));
+        assertTrue(exc.getMessage().contains("List can't be null"));
 
         assertTrue(SILab2.checkCart(new ArrayList<Item>(), 0));
 
         assertFalse(SILab2.checkCart(new ArrayList<Item>(), -1));
 
         exc = assertThrows(RuntimeException.class, ()->
-                SILab2.checkCart(create(new Item(" ", null, 20, 0.5f)), 1));
-        assertTrue(exc.getMessage().contains("No barcode!"));
+                SILab2.checkCart(create(new Item(" ", null, 40, 0.5f)), 1));
+        assertTrue(exc.getMessage().contains("No barcode"));
 
-        assertFalse(SILab2.checkCart(create(new Item(" ", "01234", 2000, 0.5f)), 2));
+        assertFalse(SILab2.checkCart(create(new Item(" ", "25897", 2400, 0.5f)), 2));
 
         exc = assertThrows(RuntimeException.class, ()->
-                SILab2.checkCart(create(new Item("abcde", "4636vh", 320, 0.5f)), 1));
-        assertTrue(exc.getMessage().contains("Invalid character in item barcode!"));
+                SILab2.checkCart(create(new Item("Anjas", "285B4", 200, 0.5f)), 1));
+        assertTrue(exc.getMessage().contains("Invalid character in item barcode"));
 
 
-        assertFalse(SILab2.checkCart(create(new Item("abcde", "4636", 20, -1)), 2));
+        assertFalse(SILab2.checkCart(create(new Item("Anjas", "2526", 35, -1)), 2));
     }
 
     @Test
     void checkMultipleCondition(){
 
-        assertTrue(SILab2.checkCart(create(new Item("abcde", "01234", 340, 0.5f)), 2));
-        assertFalse(SILab2.checkCart(create(new Item("abcde", "5784", 340, 0.5f)), 2));
-        assertFalse(SILab2.checkCart(create(new Item("abcde", "0784", 340, 0)), 2));
-        assertFalse(SILab2.checkCart(create(new Item("abcde", "0784", 34, 0.5f)), 2));
+        assertTrue(SILab2.checkCart(create(new Item("Anja1", "2583", 280, 0.5f)), 2));
+        assertFalse(SILab2.checkCart(create(new Item("Anja1", "7562", 280, 0.5f)), 2));
+        assertFalse(SILab2.checkCart(create(new Item("Anja1", "8353", 280, 0.5f)), 2));
+        assertFalse(SILab2.checkCart(create(new Item("Anja1", "4646", 280, 0.5f)), 2));
 
 
     }
