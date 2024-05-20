@@ -39,7 +39,7 @@ public class SILab2Test {
         assertTrue(SILab2.checkCart(create(new Item("Anja1", "2583", 280, 0.5f)), 2));
         assertFalse(SILab2.checkCart(create(new Item("Anja1", "7562", 280, 0.5f)), 2));
         assertFalse(SILab2.checkCart(create(new Item("Anja1", "8353", 280, 0.5f)), 2));
-        assertFalse(SILab2.checkCart(create(new Item("Anja1", "4646", 280, 0.5f)), 2));
+        assertFalse(SILab2.checkCart(create(new Item("Anja1", "4646", 28, 0.5f)), 2));
 
 
     }
