@@ -5,62 +5,42 @@ import org.junit.jupiter.api.Assertions;
 
 
 public class SILab2Test {
-
+    private List<Item> create(Item...items){
+        return new ArrayList<Item>(Arrays.asList(items));
+    }
     @Test
-    public void Every_Statement() {
-
-        //null items
-        List<Item> allItems = null;
+    void checkEveryBranch(){
         RuntimeException exc;
-        exc = Assertions.assertThrows(RuntimeException.class, () -> SILab2.checkCart(allItems, 100));
-        Assertions.assertTrue(exc.getMessage().contains("List can't be null"));
+        exc = assertThrows(RuntimeException.class, ()->
+            SILab2.checkCart(null, 0));
+        assertTrue(exc.getMessage().contains("List can't be null!"));
 
-        //bez ime
-        List<Item> itemsWithNameNull = Arrays.asList(
-                new Item(null, "54353", 50, 0.1F),
-                new Item("", "94532", 150, 0.0F)
-        );
-        Assertions.assertDoesNotThrow(() -> SILab2.checkCart(itemsWithNameNull, 100));
-        Assertions.assertFalse(() -> SILab2.checkCart(itemsWithNameNull, 100));
+        assertTrue(SILab2.checkCart(new ArrayList<Item>(), 0));
 
-        //null barkod
-        List<Item> itemsWithBarcodeNull = Arrays.asList(
-                new Item("Item1", null, 50, 0.1F),
-                new Item("Item2", "", 150, 0.1F)
+        assertFalse(SILab2.checkCart(new ArrayList<Item>(), -1));
 
-        );
-        exc = Assertions.assertThrows(RuntimeException.class, () -> SILab2.checkCart(itemsWithBarcodeNull, 100));
-        Assertions.assertTrue(ex.getMessage().contains("Enter barcode"));
+        exc = assertThrows(RuntimeException.class, ()->
+                SILab2.checkCart(create(new Item(" ", null, 20, 0.5f)), 1));
+        assertTrue(exc.getMessage().contains("No barcode!"));
 
-        //nevaliden barkod
-        List<Item> itemsWithInvalidBarcode = Arrays.asList(
-                new Item("Item1", "123A45", 50, 0.1F),
-                new Item("Item2", "6789B", 150, 0.0F)
-        );
-        exc = Assertions.assertThrows(RuntimeException.class, () -> SILab2.checkCart(itemsWithInvalidBarcode, 100));
-        Assertions.assertTrue(ex.getMessage().contains("Invalid character"));
+        assertFalse(SILab2.checkCart(create(new Item(" ", "01234", 2000, 0.5f)), 2));
 
-        //spec diskont
-        List<Item> itemsForSpecialDiscount = Arrays.asList(
-                new Item("Item1", "78935", 600, 0.1F),
-                new Item("Item2", "24532", 300, 0.1F)
-        );
-        Assertions.assertTrue(SILab2.checkCart(itemsForSpecialDiscount, 900));
+        exc = assertThrows(RuntimeException.class, ()->
+                SILab2.checkCart(create(new Item("abcde", "4636vh", 320, 0.5f)), 1));
+        assertTrue(exc.getMessage().contains("Invalid character in item barcode!"));
 
+
+        assertFalse(SILab2.checkCart(create(new Item("abcde", "4636", 20, -1)), 2));
     }
 
     @Test
-    public void testSpecialDiscountCondition(){
-        List<Item> allItems = Arrays.asList(
-        new Item("Item 1", "78935", 600, 0.2f),
-        new Item("Item 2", "24532", 300, 0.1f),
-        new Item("Item 3", "65345", 500, 0.25f)
-        );
+    void checkMultipleCondition(){
 
-        float krajnasuma = (float) ((600*0.2F)-30 + (300*0.1F) + (500*0.25)-30);
-        
-        Assertions.assertTrue(SILab2.checkCart(allItems,(int)krajnasuma));
+        assertTrue(SILab2.checkCart(create(new Item("abcde", "01234", 340, 0.5f)), 2));
+        assertFalse(SILab2.checkCart(create(new Item("abcde", "5784", 340, 0.5f)), 2));
+        assertFalse(SILab2.checkCart(create(new Item("abcde", "0784", 340, 0)), 2));
+        assertFalse(SILab2.checkCart(create(new Item("abcde", "0784", 34, 0.5f)), 2));
+
 
     }
-
 }
