@@ -11,9 +11,9 @@ public class SILab2Test {
     @Test
     void checkEveryBranch(){
         RuntimeException exc;
-        exc = assertThrows(RuntimeException.class, ()->
+        exc = assertThrows(RuntimeException.class, () ->
             SILab2.checkCart(null, 0));
-        assertTrue(exc.getMessage().contains("List can't be null"));
+        assertTrue(exc.getMessage().contains("List can' t be null"));
 
         assertTrue(SILab2.checkCart(new ArrayList<Item>(), 0));
 
