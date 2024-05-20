@@ -23,7 +23,7 @@ public class SILab2Test {
                 SILab2.checkCart(create(new Item(" ", null, 40, 0.5f)), 1));
         assertTrue(exc.getMessage().contains("No barcode"));
 
-        assertFalse(SILab2.checkCart(create(new Item(" ", "25897", 2400, 0.5f)), 2));
+        assertFalse(SILab2.checkCart(create(new Item(" ", "05897", 2400, 0.5f)), 2));
 
         exc = assertThrows(RuntimeException.class, ()->
                 SILab2.checkCart(create(new Item("Anjas", "285B4", 200, 0.5f)), 1));
@@ -36,7 +36,7 @@ public class SILab2Test {
     @Test
     void checkMultipleCondition(){
 
-        assertTrue(SILab2.checkCart(create(new Item("Anja1", "2583", 280, 0.5f)), 2));
+        assertTrue(SILab2.checkCart(create(new Item("Anja1", "0583", 280, 0.5f)), 2));
         assertFalse(SILab2.checkCart(create(new Item("Anja1", "7562", 280, 0.5f)), 2));
         assertFalse(SILab2.checkCart(create(new Item("Anja1", "8353", 280, 0.5f)), 2));
         assertFalse(SILab2.checkCart(create(new Item("Anja1", "4646", 28, 0.5f)), 2));
