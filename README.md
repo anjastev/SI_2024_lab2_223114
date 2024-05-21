@@ -47,21 +47,21 @@ AllItems[{name="",barcode=null,price"40",discount="0.5"}], payment=any
 
 Петти тест 
 
-AllItems[{name="",barcode="25807",price="2400",discount="0.5"}], payment=2 
+AllItems[{name="",barcode="025807",price="2400",discount="0.5"}], payment=2 
 
 Се праќа еден објект со barcode со 0 и цена над 300
 
 
 Шести тест 
 
-AllItems[{name="Anjas",barcode="285B4",price"200",discount="0.5"}], payment=any 
+AllItems[{name="Anjas",barcode="0285B4",price"200",discount="0.5"}], payment=any 
 
 Се праќа објект со име и barcode кој содржи букви
 
 
 Седми тест 
 
-AllItems[{name="Anjas",barcode="2526",price"55",discount="-1"}], payment=any 
+AllItems[{name="Anjas",barcode="02526",price"55",discount="-1"}], payment=any 
 
 Се праќа објект со цена помала од 300 и discount негативна вредност
 
@@ -146,7 +146,7 @@ assertFalse(SILab2.checkCart(create(new Item(" ", "05897", 2400, 0.5f)), 2));
 6.Шести тест
 
 exc = assertThrows(RuntimeException.class, ()->
-        SILab2.checkCart(create(new Item("Anjas", "285B4", 200, 0.5f)), 1));
+        SILab2.checkCart(create(new Item("Anjas", "0285B4", 200, 0.5f)), 1));
 assertTrue(exc.getMessage().contains("Invalid character in item barcode"));
 
 Овој тест фрла исклучок кога barcode содржи букви/невалидни карактери 
@@ -154,7 +154,7 @@ assertTrue(exc.getMessage().contains("Invalid character in item barcode"));
 
 7.Седми тест 
 
-assertFalse(SILab2.checkCart(create(new Item("Anjas", "2526", 35, -1)), 2));
+assertFalse(SILab2.checkCart(create(new Item("Anjas", "02526", 35, -1)), 2));
 
 Овој тест проверува дали враќа false кога цената е помаала од 300 и discount има негативна вредност
 
